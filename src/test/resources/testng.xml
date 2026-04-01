@@ -3,6 +3,7 @@
     <test name="Authentication tests">
         <classes>
             <class name="com.automationexercise.tests.AuthenticationTests"/>
+            <class name="com.automationexercise.tests.ProductsTests"/>
         </classes>
     </test>
 </suite>

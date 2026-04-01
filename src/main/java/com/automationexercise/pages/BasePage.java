@@ -29,19 +29,25 @@ public abstract class BasePage {
     }
 
     protected void click(By locator) {
+        logger.info("Clicking element located by {}", locator);
         WebElement element = waitUntilClickable(locator);
-        scrollIntoView(element);
+        click(element);
+    }
+
+    protected void click(WebElement element) {
+        scrollElementIntoView(element);
         try {
             element.click();
         } catch (Exception exception) {
-            logger.debug("Standard click failed for {}. Falling back to JavaScript click.", locator, exception);
-            ((JavascriptExecutor) driver()).executeScript("arguments[0].click();", element);
+            logger.debug("Standard click failed. Falling back to JavaScript click.", exception);
+            jsClick(element);
         }
     }
 
     protected void type(By locator, String text) {
+        logger.info("Typing into element located by {} with value {}", locator, maskValue(text));
         WebElement element = waitUntilClickable(locator);
-        scrollIntoView(element);
+        scrollElementIntoView(element);
         try {
             element.click();
             element.clear();
@@ -59,6 +65,7 @@ public abstract class BasePage {
     }
 
     protected void selectByVisibleText(By locator, String visibleText) {
+        logger.info("Selecting '{}' from dropdown located by {}", visibleText, locator);
         new Select(waitUntilVisible(locator)).selectByVisibleText(visibleText);
     }
 
@@ -76,6 +83,7 @@ public abstract class BasePage {
     }
 
     protected void waitForDocumentReady() {
+        logger.info("Waiting for document ready state on {}", driver().getCurrentUrl());
         new WebDriverWait(driver(), Duration.ofSeconds(20)).until(webDriver ->
                 "complete".equals(((JavascriptExecutor) webDriver).executeScript("return document.readyState")));
     }
@@ -88,7 +96,40 @@ public abstract class BasePage {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    private void scrollIntoView(WebElement element) {
+    protected boolean waitForUrlContains(String partialUrl) {
+        try {
+            wait.until(ExpectedConditions.urlContains(partialUrl));
+            return true;
+        } catch (TimeoutException exception) {
+            return false;
+        }
+    }
+
+    protected void scrollElementIntoView(WebElement element) {
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+    }
+
+    protected void jsClick(WebElement element) {
+        ((JavascriptExecutor) driver()).executeScript("arguments[0].click();", element);
+    }
+
+    protected String pageText() {
+        Object pageText = ((JavascriptExecutor) driver()).executeScript("return document.body.innerText;");
+        return pageText == null ? "" : pageText.toString();
+    }
+
+    private String maskValue(String text) {
+        if (text == null || text.isBlank()) {
+            return "<empty>";
+        }
+        if (text.contains("@")) {
+            int atIndex = text.indexOf('@');
+            int visibleChars = Math.min(3, atIndex);
+            return text.substring(0, visibleChars) + "***" + text.substring(atIndex);
+        }
+        if (text.length() <= 3) {
+            return "***";
+        }
+        return text.substring(0, 3) + "***";
     }
 }

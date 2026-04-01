@@ -16,7 +16,7 @@ Java UI test automation framework for [Automation Exercise](https://automationex
 
 ## Test Case Tracker
 
-Source: [Automation Exercise Test Cases](https://automationexercise.com/test_cases)
+Source: [Automation Exercise Test Cases](https://automationexercise.com/test_cases), verified on April 1, 2026.
 
 | # | Official test case | Status |
 |---|---|---|
@@ -27,7 +27,7 @@ Source: [Automation Exercise Test Cases](https://automationexercise.com/test_cas
 | 5 | Register User with existing email | To Do |
 | 6 | Contact Us Form | To Do |
 | 7 | Verify Test Cases Page | To Do |
-| 8 | Verify All Products and product detail page | To Do |
+| 8 | Verify All Products and product detail page | Done |
 | 9 | Search Product | To Do |
 | 10 | Verify Subscription in home page | To Do |
 | 11 | Verify Subscription in Cart page | To Do |
@@ -85,3 +85,4 @@ src
 
 - Selenium Manager resolves the browser driver automatically.
 - A local browser still needs to be installed.
+- Test lifecycle logs and page-action logs are written to the console and to `logs/framework.log` file. The `logs/framework.log` file is git innored on purpose and will be created automatically when the tests are run.
