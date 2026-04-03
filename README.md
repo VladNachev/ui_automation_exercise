@@ -84,5 +84,4 @@ src
 ## Notes
 
 - Selenium Manager resolves the browser driver automatically.
-- A local browser still needs to be installed.
-- Test lifecycle logs and page-action logs are written to the console and to `logs/framework.log` file. The `logs/framework.log` file is git innored on purpose and will be created automatically when the tests are run.
+- Test lifecycle logs and page-action logs are written to the console and to `logs/framework.log` file.
