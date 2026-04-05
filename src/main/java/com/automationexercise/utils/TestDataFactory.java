@@ -32,4 +32,26 @@ public final class TestDataFactory {
                 "0888123456"
         );
     }
+
+    public static User createNonExistingUser() {
+        String suffix = LocalDateTime.now().format(EMAIL_SUFFIX_FORMATTER);
+        return new User(
+                "Ms",
+                "Jane",
+                "Doe" + suffix.substring(suffix.length() - 4),
+                "jane.doe." + suffix + "@mailinator.com",
+                "AnotherSecurePassword123!",
+                "15",
+                "June",
+                "1990",
+                "Example Corp",
+                "123 Main Street",
+                "Apt 4B",
+                "United States",
+                "California",
+                "Los Angeles",
+                "90001",
+                "0888765432"
+        );
+    }
 }

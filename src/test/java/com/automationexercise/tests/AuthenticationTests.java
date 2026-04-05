@@ -3,6 +3,7 @@ package com.automationexercise.tests;
 import com.automationexercise.base.BaseUiTest;
 import com.automationexercise.flows.AuthenticationFlows;
 import com.automationexercise.model.User;
+import com.automationexercise.model.UserForIncorrectLogin;
 import com.automationexercise.pages.LoginPage;
 import com.automationexercise.pages.HomePage;
 import com.automationexercise.utils.TestDataFactory;
@@ -50,5 +51,16 @@ public class AuthenticationTests extends BaseUiTest {
 
         HomePage postDeletionHomePage = authenticationFlows.deleteCurrentAccount();
         Assert.assertTrue(postDeletionHomePage.isLoaded(), "User should return to the home page after deletion flow");
+    }
+
+    @Test(description = "Test Case 3: Login User with incorrect email and password")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Attempt to log in with invalid credentials and verify that the appropriate error message is displayed.")
+    public void shouldDisplayErrorMessageWhenLoginWithIncorrectCredentials() {
+        UserForIncorrectLogin user = new UserForIncorrectLogin();
+
+        HomePage homePage = authenticationFlows.loginIncorrectCredentials(user);
+        Assert.assertEquals(homePage.isIncorrectLoginMessageVisible(), true, "Incorrect login message should appear when logging in with invalid credentials");
+
     }
 }

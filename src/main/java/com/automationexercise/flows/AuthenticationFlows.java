@@ -1,6 +1,7 @@
 package com.automationexercise.flows;
 
 import com.automationexercise.model.User;
+import com.automationexercise.model.UserForIncorrectLogin;
 import com.automationexercise.pages.AccountCreatedPage;
 import com.automationexercise.pages.AccountDeletedPage;
 import com.automationexercise.pages.AccountInformationPage;
@@ -36,13 +37,20 @@ public class AuthenticationFlows {
     @Step("Log in as user {user.email()}")
     public HomePage login(User user) {
         logger.info("Starting login flow for {}", user.email());
-        HomePage homePage = new HomePage().open();
-        ensure(homePage.isLoaded(), "Home page should be visible");
-
-        LoginPage loginPage = homePage.clickSignupLogin();
-        ensure(loginPage.isLoginSectionVisible(), "Login section should be visible");
+        LoginPage loginPage = openLoginPage();
         HomePage resultPage = loginPage.login(user.email(), user.password());
         logger.info("Login flow submitted successfully for {}", user.email());
+        return resultPage;
+    }
+
+
+    @Step("Attempt to log in with invalid credentials: {email}")
+    public HomePage loginIncorrectCredentials(UserForIncorrectLogin user) {
+        logger.info("Starting login flow with invalid credentials for {}", user.email());
+        LoginPage loginPage = openLoginPage();
+        HomePage resultPage = loginPage.login(user.email(), user.password());
+        ensure(resultPage.isIncorrectLoginMessageVisible(), "Incorrect login message should be visible");
+        logger.info("Login failed for {}", user.email());
         return resultPage;
     }
 
@@ -60,5 +68,14 @@ public class AuthenticationFlows {
         if (!condition) {
             throw new IllegalStateException(message);
         }
+    }
+
+    private LoginPage openLoginPage() {
+        HomePage homePage = new HomePage().open();
+        ensure(homePage.isLoaded(), "Home page should be visible");
+
+        LoginPage loginPage = homePage.clickSignupLogin();
+        ensure(loginPage.isLoginSectionVisible(), "Login section should be visible");
+        return loginPage;
     }
 }

@@ -12,6 +12,8 @@ public class HomePage extends BasePage {
     private static final By DELETE_ACCOUNT_LINK = By.cssSelector("a[href='/delete_account']");
     private static final By LOGOUT_LINK = By.cssSelector("a[href='/logout']");
 
+    private static final By INCORRECT_LOGIN_MESSAGE = By.xpath("//p[contains(text(),'Your email or password is incorrect!')]");
+
     public HomePage open() {
         driver().get(FrameworkConfig.baseUrl());
         waitForDocumentReady();
@@ -40,6 +42,10 @@ public class HomePage extends BasePage {
 
     public boolean isLoggedInAsVisible(String expectedName) {
         return textOf(LOGGED_IN_AS_LABEL).contains(expectedName);
+    }
+
+    public boolean isIncorrectLoginMessageVisible() {
+        return isVisible(INCORRECT_LOGIN_MESSAGE);
     }
 
     public LoginPage clickLogout() {
