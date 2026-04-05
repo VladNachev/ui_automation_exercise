@@ -11,8 +11,9 @@ public class HomePage extends BasePage {
     private static final By LOGGED_IN_AS_LABEL = By.xpath("//a[contains(.,'Logged in as')]");
     private static final By DELETE_ACCOUNT_LINK = By.cssSelector("a[href='/delete_account']");
     private static final By LOGOUT_LINK = By.cssSelector("a[href='/logout']");
-
     private static final By INCORRECT_LOGIN_MESSAGE = By.xpath("//p[contains(text(),'Your email or password is incorrect!')]");
+
+    //private static final By EMAIL_ALREADY_EXISTS_MESSAGE = By.xpath("//p[contains(text(),'Email Address already exist!')]");
 
     public HomePage open() {
         driver().get(FrameworkConfig.baseUrl());
@@ -47,6 +48,10 @@ public class HomePage extends BasePage {
     public boolean isIncorrectLoginMessageVisible() {
         return isVisible(INCORRECT_LOGIN_MESSAGE);
     }
+
+    //public boolean isEmailAlreadyExistsMessageVisible() {
+//        return isVisible(EMAIL_ALREADY_EXISTS_MESSAGE);
+//    }
 
     public LoginPage clickLogout() {
         click(LOGOUT_LINK);

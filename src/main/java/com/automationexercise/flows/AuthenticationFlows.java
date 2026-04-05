@@ -34,6 +34,25 @@ public class AuthenticationFlows {
         return accountCreatedPage.clickContinue();
     }
 
+    @Step("Register user with same email: {user.email()}")
+    public HomePage registerUserWithSameEmail(User user) {
+        logger.info("Starting registration flow for {}", user.email());
+        HomePage homePage = new HomePage().open();
+        ensure(homePage.isLoaded(), "Home page should be visible");
+
+        LoginPage loginPage = homePage.clickSignupLogin();
+        ensure(loginPage.isSignupSectionVisible(), "Signup section should be visible");
+
+        AccountInformationPage accountInformationPage = loginPage.startSignup(user.fullName(), user.email());
+        ensure(accountInformationPage.isLoaded(), "Enter Account Information screen should be visible");
+
+        AccountCreatedPage accountCreatedPage = accountInformationPage.register(user);
+        ensure(accountCreatedPage.isVisible(), "Account Created screen should be visible");
+
+        logger.info("Registration flow completed successfully for {}", user.email());
+        return accountCreatedPage.clickContinue();
+    }
+
     @Step("Log in as user {user.email()}")
     public HomePage login(User user) {
         logger.info("Starting login flow for {}", user.email());

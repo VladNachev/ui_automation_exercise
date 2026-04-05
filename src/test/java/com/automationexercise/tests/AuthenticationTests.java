@@ -4,6 +4,7 @@ import com.automationexercise.base.BaseUiTest;
 import com.automationexercise.flows.AuthenticationFlows;
 import com.automationexercise.model.User;
 import com.automationexercise.model.UserForIncorrectLogin;
+import com.automationexercise.pages.AccountInformationPage;
 import com.automationexercise.pages.LoginPage;
 import com.automationexercise.pages.HomePage;
 import com.automationexercise.utils.TestDataFactory;
@@ -60,7 +61,24 @@ public class AuthenticationTests extends BaseUiTest {
         UserForIncorrectLogin user = new UserForIncorrectLogin();
 
         HomePage homePage = authenticationFlows.loginIncorrectCredentials(user);
-        Assert.assertEquals(homePage.isIncorrectLoginMessageVisible(), true, "Incorrect login message should appear when logging in with invalid credentials");
-
+        Assert.assertTrue(homePage.isIncorrectLoginMessageVisible(), "Incorrect login message should appear when logging in with invalid credentials");
     }
+
+    @Test(description = "Test Case 4: Register user with existing email")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Attempt to register a new user using an email that already exists in the system and verify that the appropriate error message is displayed.")
+    public void shouldDisplayErrorMessageWhenRegisteringWithExistingEmail() {
+        User user = TestDataFactory.createUniqueUser();
+
+        HomePage homePageAfterRegistration = authenticationFlows.registerNewUser(user);
+        Assert.assertTrue(homePageAfterRegistration.isLoggedInAsVisible(user.fullName()), "User should be logged in immediately after registration");
+
+        LoginPage loginPage = homePageAfterRegistration.clickLogout();
+        Assert.assertTrue(loginPage.isLoginSectionVisible(), "Login page should be reachable after logout");
+
+        loginPage.startSignup(user.fullName(), user.email());
+
+        Assert.assertTrue(loginPage.isEmailAlreadyExistsMessageVisible(), "An error message about existing email should be visible when trying to register with the same email again");
+    }
+
 }

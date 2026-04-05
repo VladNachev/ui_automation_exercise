@@ -23,29 +23,28 @@ Source: [Automation Exercise Test Cases](https://automationexercise.com/test_cas
 | 1 | Register User | Done   |
 | 2 | Login User with correct email and password | Done   |
 | 3 | Login User with incorrect email and password | Done   |
-| 4 | Logout User | To Do  |
-| 5 | Register User with existing email | To Do  |
-| 6 | Contact Us Form | To Do  |
-| 7 | Verify Test Cases Page | To Do  |
-| 8 | Verify All Products and product detail page | Done   |
-| 9 | Search Product | To Do  |
-| 10 | Verify Subscription in home page | To Do  |
-| 11 | Verify Subscription in Cart page | To Do  |
-| 12 | Add Products in Cart | To Do  |
-| 13 | Verify Product quantity in Cart | To Do  |
-| 14 | Place Order: Register while Checkout | To Do  |
-| 15 | Place Order: Register before Checkout | To Do  |
-| 16 | Place Order: Login before Checkout | To Do  |
-| 17 | Remove Products From Cart | To Do  |
-| 18 | View Category Products | To Do  |
-| 19 | View & Cart Brand Products | To Do  |
-| 20 | Search Products and Verify Cart After Login | To Do  |
-| 21 | Add review on product | To Do  |
-| 22 | Add to cart from Recommended items | To Do  |
-| 23 | Verify address details in checkout page | To Do  |
-| 24 | Download Invoice after purchase order | To Do  |
-| 25 | Verify Scroll Up using 'Arrow' button and Scroll Down functionality | To Do  |
-| 26 | Verify Scroll Up without 'Arrow' button and Scroll Down functionality | To Do  |
+| 4 | Register User with existing email | Done   |
+| 5 | Contact Us Form | To Do  |
+| 6 | Verify Test Cases Page | To Do  |
+| 7 | Verify All Products and product detail page | Done   |
+| 8 | Search Product | To Do  |
+| 9 | Verify Subscription in home page | To Do  |
+| 10 | Verify Subscription in Cart page | To Do  |
+| 11 | Add Products in Cart | To Do  |
+| 12 | Verify Product quantity in Cart | To Do  |
+| 13 | Place Order: Register while Checkout | To Do  |
+| 14 | Place Order: Register before Checkout | To Do  |
+| 15 | Place Order: Login before Checkout | To Do  |
+| 16 | Remove Products From Cart | To Do  |
+| 17 | View Category Products | To Do  |
+| 18 | View & Cart Brand Products | To Do  |
+| 19 | Search Products and Verify Cart After Login | To Do  |
+| 20 | Add review on product | To Do  |
+| 21 | Add to cart from Recommended items | To Do  |
+| 22 | Verify address details in checkout page | To Do  |
+| 23 | Download Invoice after purchase order | To Do  |
+| 24 | Verify Scroll Up using 'Arrow' button and Scroll Down functionality | To Do  |
+| 25 | Verify Scroll Up without 'Arrow' button and Scroll Down functionality | To Do  |
 
 ## Project structure
 

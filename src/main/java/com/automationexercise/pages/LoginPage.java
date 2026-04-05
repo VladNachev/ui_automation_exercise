@@ -12,6 +12,7 @@ public class LoginPage extends BasePage {
     private static final By SIGNUP_NAME_INPUT = By.cssSelector("input[data-qa='signup-name']");
     private static final By SIGNUP_EMAIL_INPUT = By.cssSelector("input[data-qa='signup-email']");
     private static final By SIGNUP_BUTTON = By.cssSelector("button[data-qa='signup-button']");
+    private static final By EMAIL_ALREADY_EXISTS_MESSAGE = By.xpath("//p[contains(text(),'Email Address already exist!')]");
 
     public boolean isLoginSectionVisible() {
         return isVisible(LOGIN_HEADER);
@@ -33,5 +34,9 @@ public class LoginPage extends BasePage {
         type(SIGNUP_EMAIL_INPUT, email);
         click(SIGNUP_BUTTON);
         return new AccountInformationPage();
+    }
+
+    public boolean isEmailAlreadyExistsMessageVisible() {
+        return isVisible(EMAIL_ALREADY_EXISTS_MESSAGE);
     }
 }

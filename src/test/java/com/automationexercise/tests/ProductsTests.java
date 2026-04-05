@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 @Feature("Products")
 public class ProductsTests extends BaseUiTest {
 
-    @Test(description = "Test Case 8: Verify All Products and product detail page")
+    @Test(description = "Test Case 7: Verify All Products and product detail page")
     @Severity(SeverityLevel.NORMAL)
     @Description("Verifies the All Products page is reachable, the product list is visible, and the first product detail page exposes the required product information.")
     public void shouldOpenAllProductsAndFirstProductDetails() {
