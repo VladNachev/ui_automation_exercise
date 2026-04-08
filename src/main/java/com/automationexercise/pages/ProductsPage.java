@@ -5,19 +5,22 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import javax.swing.plaf.PanelUI;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleContains;
-
 public class ProductsPage extends BasePage {
-
     private static final By ALL_PRODUCTS_HEADER = By.cssSelector(".features_items .title.text-center");
     private static final By PRODUCT_CARDS = By.cssSelector(".features_items .product-image-wrapper");
     private static final By VIEW_PRODUCT_LINKS = By.cssSelector(".features_items a[href*='/product_details/']");
     private static final By CATEGORIES_SIDEBAR = By.xpath("//h2[normalize-space()='Category']");
+    private static final By SEARCH_PRODUCTS_INPUT = By.id("search_product");
+    private static final By searchedProductsHeader = By.cssSelector("By.cssSelector('h2.title.text-center')");
+    private static final String SEARCHED_RESULT_ITEM_XPATH = "//p[normalize-space()='%s']";
 
     public ProductsPage open() {
         driver().get(FrameworkConfig.baseUrl() + "products");
         waitForDocumentReady();
-        titleContains("All Products");
+        waitForTitleContains("All Products");
         return this;
     }
 
@@ -46,5 +49,18 @@ public class ProductsPage extends BasePage {
 
     public boolean isCategoriesSidebarVisible() {
         return isVisible(CATEGORIES_SIDEBAR);
+    }
+
+    public void typeIntoSearchProductsAndSubmit(String searchTerm) {
+        type(SEARCH_PRODUCTS_INPUT, searchTerm);
+    }
+
+    public boolean isSearchedProductsHeaderVisible() {
+
+        return isVisible(searchedProductsHeader);
+    }
+    public boolean isSearchedResultItemVisible(String expectedProductName) {
+        By searchedResultItem = By.xpath(String.format(SEARCHED_RESULT_ITEM_XPATH, expectedProductName));
+        return isVisible(searchedResultItem);
     }
 }

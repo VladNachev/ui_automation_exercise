@@ -132,4 +132,9 @@ public abstract class BasePage {
         }
         return text.substring(0, 3) + "***";
     }
+
+    public void waitForTitleContains(String title) {
+        new WebDriverWait(driver(), Duration.ofSeconds(15))
+                .until(ExpectedConditions.titleContains(title));
+    }
 }
