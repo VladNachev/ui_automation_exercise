@@ -11,6 +11,7 @@ import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 @Listeners(com.automationexercise.listeners.AllureTestListener.class)
 @Feature("Products")
@@ -27,13 +28,17 @@ public class ProductsTests extends BaseUiTest {
         Assert.assertTrue(productsPage.isLoaded(), "All Products page should be visible");
         Assert.assertTrue(productsPage.isProductListVisible(), "The products list should be visible");
 
+        SoftAssert softAssert = new SoftAssert();
+
         ProductDetailsPage productDetailsPage = productsPage.viewFirstProduct();
-        Assert.assertTrue(productDetailsPage.isLoaded(), "User should land on the product detail page");
-        Assert.assertTrue(productDetailsPage.hasVisibleProductName(), "Product name should be visible");
-        Assert.assertTrue(productDetailsPage.hasVisibleCategory(), "Category should be visible");
-        Assert.assertTrue(productDetailsPage.hasVisiblePrice(), "Price should be visible");
-        Assert.assertTrue(productDetailsPage.hasVisibleAvailability(), "Availability should be visible");
-        Assert.assertTrue(productDetailsPage.hasVisibleCondition(), "Condition should be visible");
-        Assert.assertTrue(productDetailsPage.hasVisibleBrand(), "Brand should be visible");
+        softAssert.assertTrue(productDetailsPage.isLoaded(), "User should land on the product detail page");
+        softAssert.assertTrue(productDetailsPage.hasVisibleProductName(), "Product name should be visible");
+        softAssert.assertTrue(productDetailsPage.hasVisibleCategory(), "Category should be visible");
+        softAssert.assertTrue(productDetailsPage.hasVisiblePrice(), "Price should be visible");
+        softAssert.assertTrue(productDetailsPage.hasVisibleAvailability(), "Availability should be visible");
+        softAssert.assertTrue(productDetailsPage.hasVisibleCondition(), "Condition should be visible");
+        softAssert.assertTrue(productDetailsPage.hasVisibleBrand(), "Brand should be visible");
+
+        softAssert.assertAll();
     }
 }
