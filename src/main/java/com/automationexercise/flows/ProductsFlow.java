@@ -20,7 +20,7 @@ public class ProductsFlow extends BaseFlow {
     public ProductsPage searchForProductAndVerify(String searchTerm) {
         logger.info("Starting flow to search for product '{}' and verify Searched Products header is visible", searchTerm);
         ProductsPage productsPage = new ProductsPage().open();
-        productsPage.typeIntoSearchProductsAndSubmit(searchTerm);
+        productsPage.searchForProduct(searchTerm);
         ensure(productsPage.isSearchedProductsHeaderVisible(), "Searched Products header should be visible, indicating the search results are displayed");
         return productsPage;
     }

@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 @Listeners(com.automationexercise.listeners.AllureTestListener.class)
 @Feature("Products")
 public class ProductsTests extends BaseUiTest {
-    public static final String searchTerm = "Man TShirt";
+    private static final String SEARCH_TERM = "Men Tshirt";
 
     @Test(description = "Test Case 8: Verify All Products and product detail page")
     @Severity(SeverityLevel.NORMAL)
@@ -44,7 +44,11 @@ public class ProductsTests extends BaseUiTest {
     @Severity(SeverityLevel.NORMAL)
     @Description("Verifies that the search functionality on the Products page works correctly by searching for a specific product and checking that the search results are displayed.")
     public void shouldSearchForProduct() {
-        ProductsPage productsPage = new ProductsFlow().searchForProductAndVerify(searchTerm);
-        Assert.assertTrue(productsPage.isSearchedResultItemVisible(searchTerm), "Searched Products header should be visible, indicating the search results are displayed");
+        ProductsPage productsPage = new ProductsFlow().searchForProductAndVerify(SEARCH_TERM);
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(productsPage.isSearchedProductsHeaderVisible(), "Searched Products header should be visible");
+        softAssert.assertTrue(productsPage.isSearchedResultItemVisible(SEARCH_TERM), "Expected searched product should be visible in the results");
+        softAssert.assertAll();
     }
 }
