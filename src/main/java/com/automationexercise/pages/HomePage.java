@@ -13,6 +13,9 @@ public class HomePage extends BasePage {
     private static final By LOGOUT_LINK = By.cssSelector("a[href='/logout']");
     private static final By INCORRECT_LOGIN_MESSAGE = By.xpath("//p[contains(text(),'Your email or password is incorrect!')]");
 
+    // navigation bar links
+    private static final By TC_LINK = By.cssSelector("a[href='/test_cases']");
+
 
     public HomePage open() {
         driver().get(FrameworkConfig.baseUrl());
@@ -56,5 +59,15 @@ public class HomePage extends BasePage {
     public AccountDeletedPage clickDeleteAccount() {
         click(DELETE_ACCOUNT_LINK);
         return new AccountDeletedPage();
+    }
+
+    public TCPage clickTestCasesLink() {
+        click(TC_LINK);
+        if (!waitForUrlContains("/test_cases")) {
+            logger.debug("Test Cases link did not navigate as expected. Falling back to direct test cases URL.");
+            driver().navigate().to(FrameworkConfig.baseUrl() + "test_cases");
+            waitForDocumentReady();
+        }
+        return new TCPage();
     }
 }

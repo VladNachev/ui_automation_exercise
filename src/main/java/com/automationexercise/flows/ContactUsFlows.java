@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ContactUsFlows {
+public class ContactUsFlows extends BaseFlow {
 
     private static final Logger logger = LoggerFactory.getLogger(ContactUsFlows.class);
 
@@ -33,11 +33,5 @@ public class ContactUsFlows {
         logger.info("Waiting for submit alert and confirming it");
         ContactUsPage contactUsPage = new ContactUsPage();
         return contactUsPage.waitForSubmitAlertTextAndConfirm();
-    }
-
-    private void ensure(boolean condition, String message) {
-        if (!condition) {
-            throw new IllegalStateException(message);
-        }
     }
 }

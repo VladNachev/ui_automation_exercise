@@ -24,7 +24,7 @@ public class AuthenticationTests extends BaseUiTest {
 
     @Test(description = "Test Case 1: Register User")
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Covers Automation Exercise test case 1 by creating a new user account and deleting it afterwards.")
+    @Description("Covers new user registration and deleting it afterwards.")
     public void shouldRegisterUserSuccessfully() {
         User user = TestDataFactory.createUniqueUser();
 

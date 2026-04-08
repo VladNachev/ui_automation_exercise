@@ -11,7 +11,7 @@ import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AuthenticationFlows {
+public class AuthenticationFlows extends BaseFlow {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationFlows.class);
 
@@ -82,13 +82,6 @@ public class AuthenticationFlows {
         logger.info("Account deletion flow completed successfully");
         return resultPage;
     }
-
-    private void ensure(boolean condition, String message) {
-        if (!condition) {
-            throw new IllegalStateException(message);
-        }
-    }
-
     private LoginPage openLoginPage() {
         HomePage homePage = new HomePage().open();
         ensure(homePage.isLoaded(), "Home page should be visible");
