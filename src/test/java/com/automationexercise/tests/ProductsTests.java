@@ -1,7 +1,7 @@
 package com.automationexercise.tests;
 
 import com.automationexercise.base.BaseUiTest;
-import com.automationexercise.pages.HomePage;
+import com.automationexercise.flows.ProductsFlow;
 import com.automationexercise.pages.ProductDetailsPage;
 import com.automationexercise.pages.ProductsPage;
 import io.qameta.allure.Description;
@@ -17,15 +17,12 @@ import org.testng.asserts.SoftAssert;
 @Feature("Products")
 public class ProductsTests extends BaseUiTest {
 
-    @Test(description = "Test Case 7: Verify All Products and product detail page")
+    @Test(description = "Test Case 8: Verify All Products and product detail page")
     @Severity(SeverityLevel.NORMAL)
-    @Description("Verifies the All Products page is reachable, the product list is visible, and the first product detail page exposes the required product information.")
+    @Description("Verifies the All Products page is reachable through the dedicated products flow, the product list is visible, and the first product detail page exposes the required product information.")
     public void shouldOpenAllProductsAndFirstProductDetails() {
-        HomePage homePage = new HomePage().open();
-        Assert.assertTrue(homePage.isLoaded(), "Home page should be visible");
-
-        ProductsPage productsPage = homePage.clickProducts();
-        Assert.assertTrue(productsPage.isLoaded(), "All Products page should be visible");
+        ProductsPage productsPage = new ProductsFlow().openProductsPageAndVerifyTitle();
+        Assert.assertTrue(productsPage.isAllProductsHeaderLoaded(), "All Products header should be visible");
         Assert.assertTrue(productsPage.isProductListVisible(), "The products list should be visible");
 
         SoftAssert softAssert = new SoftAssert();

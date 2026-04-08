@@ -1,6 +1,7 @@
 package com.automationexercise.flows;
 
 import com.automationexercise.pages.HomePage;
+import com.automationexercise.pages.ProductsPage;
 import com.automationexercise.pages.TCPage;
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
@@ -16,5 +17,14 @@ public class NavigationFlows extends BaseFlow {
         TCPage tcPage = homePage.clickTestCasesLink();
         ensure(tcPage.isTitleCorrect(), "Test Cases page title should be correct, indicating the page is loaded");
         return tcPage;
+    }
+
+    @Step("Navigate to Products page and verify it is loaded")
+    public ProductsPage navigateToProductsPageAndVerify() {
+        logger.info("Starting flow to navigate to Products page and verify it is loaded");
+        HomePage homePage = new HomePage().open();
+        ProductsPage productsPage = homePage.clickProducts();
+        ensure(productsPage.isAllProductsHeaderLoaded(), "Product page header should be visible, indicating the page is loaded");
+        return productsPage;
     }
 }

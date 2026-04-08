@@ -27,7 +27,6 @@ public class ContactUsTest extends BaseUiTest {
 
         ContactUsPage resultPage = contactUsFlows.waitForSubmitAlertTextAndConfirm();
         resultPage.isSuccessMessageVisible();
-
     }
 
 }

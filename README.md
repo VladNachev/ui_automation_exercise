@@ -23,7 +23,7 @@ Java UI test automation framework for [Automation Exercise](https://automationex
 | 3 | Login User with incorrect email and password | Done   |
 | 4 | Register User with existing email | Done   |
 | 5 | Contact Us Form | Done   |
-| 6 | Verify Test Cases Page | To Do  |
+| 6 | Verify Test Cases Page | Done   |
 | 7 | Verify All Products and product detail page | Done   |
 | 8 | Search Product | To Do  |
 | 9 | Verify Subscription in home page | To Do  |
