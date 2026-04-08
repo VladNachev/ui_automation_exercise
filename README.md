@@ -16,15 +16,13 @@ Java UI test automation framework for [Automation Exercise](https://automationex
 
 ## Test Case Tracker
 
-Source: [Automation Exercise Test Cases](https://automationexercise.com/test_cases), verified on April 1, 2026.
-
 | # | Official test case | Status |
 |---|---|--------|
 | 1 | Register User | Done   |
 | 2 | Login User with correct email and password | Done   |
 | 3 | Login User with incorrect email and password | Done   |
 | 4 | Register User with existing email | Done   |
-| 5 | Contact Us Form | To Do  |
+| 5 | Contact Us Form | Done   |
 | 6 | Verify Test Cases Page | To Do  |
 | 7 | Verify All Products and product detail page | Done   |
 | 8 | Search Product | To Do  |
