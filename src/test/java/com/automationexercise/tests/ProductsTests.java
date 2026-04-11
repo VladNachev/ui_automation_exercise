@@ -18,7 +18,7 @@ import org.testng.asserts.SoftAssert;
 public class ProductsTests extends BaseUiTest {
     private static final String SEARCH_TERM = "Men Tshirt";
 
-    @Test(description = "Test Case 8: Verify All Products and product detail page")
+    @Test(description = "Test Case 7: Verify All Products and product detail page")
     @Severity(SeverityLevel.NORMAL)
     @Description("Verifies the All Products page is reachable through the dedicated products flow, the product list is visible, and the first product detail page exposes the required product information.")
     public void shouldOpenAllProductsAndFirstProductDetails() {
@@ -40,7 +40,7 @@ public class ProductsTests extends BaseUiTest {
         softAssert.assertAll();
     }
 
-    @Test(description = "Test Case 9: Verify search functionality in Products page")
+    @Test(description = "Test Case 8: Verify search functionality in Products page")
     @Severity(SeverityLevel.NORMAL)
     @Description("Verifies that the search functionality on the Products page works correctly by searching for a specific product and checking that the search results are displayed.")
     public void shouldSearchForProduct() {
