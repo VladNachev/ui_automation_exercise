@@ -1,9 +1,10 @@
 package com.automationexercise.pages;
 
 import com.automationexercise.config.FrameworkConfig;
+import com.automationexercise.interfaces.NewsletterSubscribable;
 import org.openqa.selenium.By;
 
-public class HomePage extends BasePage {
+public class HomePage extends BasePage implements NewsletterSubscribable<HomePage> {
 
     private static final By HOME_LOGO = By.cssSelector("img[alt='Website for automation practice']");
     private static final By PRODUCTS_LINK = By.cssSelector("a[href='/products']");
@@ -69,5 +70,14 @@ public class HomePage extends BasePage {
             waitForDocumentReady();
         }
         return new TCPage();
+    }
+
+    public HomePage subscribeToNewsletter(String email) {
+        subscribeToNewsletterInFooter(email);
+        return this;
+    }
+
+    public boolean isNewsletterSuccessMessageVisible() {
+        return isNewsletterSuccessMessageVisibleInFooter();
     }
 }

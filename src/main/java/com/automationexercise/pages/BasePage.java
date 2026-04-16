@@ -17,6 +17,10 @@ import org.slf4j.LoggerFactory;
 
 public abstract class BasePage {
 
+    private static final By FOOTER_SUBSCRIBER_EMAIL_INPUT = By.id("susbscribe_email");
+    private static final By FOOTER_SUBSCRIBE_BUTTON = By.id("subscribe");
+    private static final By FOOTER_NEWSLETTER_SUCCESS_MESSAGE = By.xpath("//div[contains(@class,'alert-success') and contains(.,'You have been successfully subscribed!')]");
+
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     private final WebDriverWait wait;
 
@@ -113,9 +117,25 @@ public abstract class BasePage {
         ((JavascriptExecutor) driver()).executeScript("arguments[0].click();", element);
     }
 
+    protected void jsScrollToPageBottom() {
+        ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
+
     protected String pageText() {
         Object pageText = ((JavascriptExecutor) driver()).executeScript("return document.body.innerText;");
         return pageText == null ? "" : pageText.toString();
+    }
+
+    protected void subscribeToNewsletterInFooter(String email) {
+        jsScrollToPageBottom();
+        scrollElementIntoView(waitUntilClickable(FOOTER_SUBSCRIBER_EMAIL_INPUT));
+        type(FOOTER_SUBSCRIBER_EMAIL_INPUT, email);
+        click(FOOTER_SUBSCRIBE_BUTTON);
+        waitUntilVisible(FOOTER_NEWSLETTER_SUCCESS_MESSAGE);
+    }
+
+    protected boolean isNewsletterSuccessMessageVisibleInFooter() {
+        return isVisible(FOOTER_NEWSLETTER_SUCCESS_MESSAGE);
     }
 
     private String maskValue(String text) {
