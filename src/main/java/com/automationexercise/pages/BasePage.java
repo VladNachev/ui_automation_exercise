@@ -121,6 +121,10 @@ public abstract class BasePage {
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
+    protected void jsScrollToPageTop() {
+        ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, 0);");
+    }
+
     protected String pageText() {
         Object pageText = ((JavascriptExecutor) driver()).executeScript("return document.body.innerText;");
         return pageText == null ? "" : pageText.toString();
