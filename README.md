@@ -26,8 +26,8 @@ Java UI test automation framework for [Automation Exercise](https://automationex
 | 6 | Verify Test Cases Page | Done   |
 | 7 | Verify All Products and product detail page | Done   |
 | 8 | Search Product | Done   |
-| 9 | Verify Subscription in home page | To Do  |
-| 10 | Verify Subscription in Cart page | To Do  |
+| 9 | Verify Subscription in home page | Done   |
+| 10 | Verify Subscription in Cart page | Done   |
 | 11 | Add Products in Cart | To Do  |
 | 12 | Verify Product quantity in Cart | To Do  |
 | 13 | Place Order: Register while Checkout | To Do  |
