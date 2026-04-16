@@ -16,33 +16,33 @@ Java UI test automation framework for [Automation Exercise](https://automationex
 
 ## Test Case Tracker
 
-| # | Official test case | Status |
-|---|---|--------|
-| 1 | Register User | Done   |
-| 2 | Login User with correct email and password | Done   |
-| 3 | Login User with incorrect email and password | Done   |
-| 4 | Register User with existing email | Done   |
-| 5 | Contact Us Form | Done   |
-| 6 | Verify Test Cases Page | Done   |
-| 7 | Verify All Products and product detail page | Done   |
-| 8 | Search Product | Done   |
-| 9 | Verify Subscription in home page | Done   |
-| 10 | Verify Subscription in Cart page | Done   |
-| 11 | Add Products in Cart | To Do  |
-| 12 | Verify Product quantity in Cart | To Do  |
-| 13 | Place Order: Register while Checkout | To Do  |
-| 14 | Place Order: Register before Checkout | To Do  |
-| 15 | Place Order: Login before Checkout | To Do  |
-| 16 | Remove Products From Cart | To Do  |
-| 17 | View Category Products | To Do  |
-| 18 | View & Cart Brand Products | To Do  |
-| 19 | Search Products and Verify Cart After Login | To Do  |
-| 20 | Add review on product | To Do  |
-| 21 | Add to cart from Recommended items | To Do  |
-| 22 | Verify address details in checkout page | To Do  |
-| 23 | Download Invoice after purchase order | To Do  |
-| 24 | Verify Scroll Up using 'Arrow' button and Scroll Down functionality | To Do  |
-| 25 | Verify Scroll Up without 'Arrow' button and Scroll Down functionality | To Do  |
+| # | Official test case | Status               |
+|---|---|----------------------|
+| 1 | Register User | Done                 |
+| 2 | Login User with correct email and password | Done                 |
+| 3 | Login User with incorrect email and password | Done                 |
+| 4 | Register User with existing email | Done                 |
+| 5 | Contact Us Form | Done                 |
+| 6 | Verify Test Cases Page | Done                 |
+| 7 | Verify All Products and product detail page | Done                 |
+| 8 | Search Product | Done                 |
+| 9 | Verify Subscription in home page | Done                 |
+| 10 | Verify Subscription in Cart page | Done                 |
+| 11 | Add Products in Cart | Done                 |
+| 12 | Verify Product quantity in Cart | Functionality Broken |
+| 13 | Place Order: Register while Checkout | To Do                |
+| 14 | Place Order: Register before Checkout | To Do                |
+| 15 | Place Order: Login before Checkout | To Do                |
+| 16 | Remove Products From Cart | To Do                |
+| 17 | View Category Products | To Do                |
+| 18 | View & Cart Brand Products | To Do                |
+| 19 | Search Products and Verify Cart After Login | To Do                |
+| 20 | Add review on product | To Do                |
+| 21 | Add to cart from Recommended items | To Do                |
+| 22 | Verify address details in checkout page | To Do                |
+| 23 | Download Invoice after purchase order | To Do                |
+| 24 | Verify Scroll Up using 'Arrow' button and Scroll Down functionality | To Do                |
+| 25 | Verify Scroll Up without 'Arrow' button and Scroll Down functionality | To Do                |
 
 ## Project structure
 
